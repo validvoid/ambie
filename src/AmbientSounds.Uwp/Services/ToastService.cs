@@ -33,7 +33,8 @@ namespace AmbientSounds.Services.Uwp
             DateTime scheduleDateTime,
             string title,
             string message,
-            bool silent = false)
+            bool silent = false,
+            string launchArg = "scheduledToast")
         {
             if (scheduleDateTime <= DateTime.Now)
             {
@@ -46,18 +47,20 @@ namespace AmbientSounds.Services.Uwp
                 .AddButton(_dismissButton.Value)
                 .AddText(title)
                 .AddText(message)
+                .AddArgument(launchArg)
                 .Schedule(scheduleDateTime, toast =>
                 {
                     toast.ExpirationTime = new DateTimeOffset(scheduleDateTime).AddMinutes(1);
                 });
         }
 
-        public void SendToast(string title, string message)
+        public void SendToast(string title, string message, string launchArg = "singleToast")
         {
             new ToastContentBuilder()
                 .AddButton(_dismissButton.Value)
                 .AddText(title)
                 .AddText(message)
+                .AddArgument(launchArg)
                 .Show(toast =>
                 {
                     toast.ExpirationTime = DateTimeOffset.Now.AddMinutes(1);

@@ -1,5 +1,4 @@
 ﻿using AmbientSounds.Constants;
-using AmbientSounds.Extensions;
 using AmbientSounds.Models;
 using AmbientSounds.Services;
 using CommunityToolkit.Diagnostics;
@@ -9,12 +8,14 @@ using JeniusApps.Common.Tools;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace AmbientSounds.ViewModels;
 
 public partial class OnlineSoundViewModel : ObservableObject
 {
+    private readonly SemaphoreSlim _loadingLock = new(1, 1);
     private readonly Sound _sound;
     private readonly IDownloadManager _downloadManager;
     private readonly ISoundService _soundService;
@@ -27,6 +28,8 @@ public partial class OnlineSoundViewModel : ObservableObject
     private readonly IUpdateService _updateService;
     private readonly ILocalizer _localizer;
     private Progress<double> _downloadProgress;
+    private bool _loading;
+    private bool _initialized;
 
     public OnlineSoundViewModel(
         Sound s, 
@@ -66,9 +69,6 @@ public partial class OnlineSoundViewModel : ObservableObject
         _localizer = localizer;
 
         _downloadProgress = new Progress<double>();
-        _downloadProgress.ProgressChanged += OnProgressChanged;
-        _soundService.LocalSoundDeleted += OnSoundDeleted;
-        _iapService.ProductPurchased += OnProductPurchased;
     }
     
     public event EventHandler? DownloadCompleted;
@@ -81,7 +81,9 @@ public partial class OnlineSoundViewModel : ObservableObject
 
     public bool UpdateAvailable => UpdateReason != UpdateReason.None;
 
-    public bool CanPlay => UpdateReason == UpdateReason.None && IsInstalled;
+    public bool CanPlay => UpdateReason == UpdateReason.None 
+        && IsInstalled 
+        && !DownloadProgressVisible;
 
     public string UpdateReasonText => UpdateReason switch
     {
@@ -97,6 +99,7 @@ public partial class OnlineSoundViewModel : ObservableObject
     [ObservableProperty]
     [NotifyPropertyChangedFor(nameof(DownloadProgressVisible))]
     [NotifyPropertyChangedFor(nameof(DownloadButtonVisible))]
+    [NotifyPropertyChangedFor(nameof(CanPlay))]
     private double _downloadProgressValue;
 
     /// <summary>
@@ -267,6 +270,27 @@ public partial class OnlineSoundViewModel : ObservableObject
     [RelayCommand]
     private async Task LoadAsync()
     {
+        if (_loading)
+        {
+            return;
+        }
+
+        await _loadingLock.WaitAsync();
+        if (_loading)
+        {
+            return;
+        }
+
+        _loading = true;
+
+        if (!_initialized)
+        {
+            _initialized = true;
+            _downloadProgress.ProgressChanged += OnProgressChanged;
+            _soundService.LocalSoundDeleted += OnSoundDeleted;
+            _iapService.ProductPurchased += OnProductPurchased;
+        }
+
         if (_downloadManager.IsDownloadActive(_sound))
         {
             var progress = _downloadManager.GetProgress(_sound);
@@ -293,6 +317,8 @@ public partial class OnlineSoundViewModel : ObservableObject
         }
 
         IsOwned = isOwned;
+        _loading = false;
+        _loadingLock.Release();
     }
 
     [RelayCommand]
@@ -357,7 +383,7 @@ public partial class OnlineSoundViewModel : ObservableObject
 
     private void RegisterProgress(IProgress<double> progress)
     {
-        if (progress is Progress<double> p)
+        if (progress is Progress<double> p && p != _downloadProgress)
         {
             if (_downloadProgress is not null)
             {
@@ -372,6 +398,7 @@ public partial class OnlineSoundViewModel : ObservableObject
     /// <inheritdoc/>
     public void Dispose()
     {
+        _initialized = false;
         _iapService.ProductPurchased -= OnProductPurchased;
         _downloadProgress.ProgressChanged -= OnProgressChanged;
         _soundService.LocalSoundDeleted -= OnSoundDeleted;

@@ -138,8 +138,8 @@
     <Compile Include="Controls\AuthDialog.xaml.cs">
       <DependentUpon>AuthDialog.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\CatalogueListControl.xaml.cs">
-      <DependentUpon>CatalogueListControl.xaml</DependentUpon>
+    <Compile Include="Controls\CatalogueRowControl.xaml.cs">
+      <DependentUpon>CatalogueRowControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\CompactFocusTimerModule.xaml.cs">
       <DependentUpon>CompactFocusTimerModule.xaml</DependentUpon>
@@ -233,6 +233,7 @@
     <Compile Include="Controls\SoundListItem.xaml.cs">
       <DependentUpon>SoundListItem.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\SparkleLottie.cs" />
     <Compile Include="Controls\StatDetail.xaml.cs">
       <DependentUpon>StatDetail.xaml</DependentUpon>
     </Compile>
@@ -254,6 +255,7 @@
     <Compile Include="Controls\TutorialDialog.xaml.cs">
       <DependentUpon>TutorialDialog.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\TwoToneButton.cs" />
     <Compile Include="Controls\UIHelper.cs" />
     <Compile Include="Controls\VideosMenu.xaml.cs">
       <DependentUpon>VideosMenu.xaml</DependentUpon>
@@ -268,6 +270,7 @@
     </Compile>
     <Compile Include="Services\AppServiceController.cs" />
     <Compile Include="Services\AppSettings.cs" />
+    <Compile Include="Services\AudioDeviceService.cs" />
     <Compile Include="Services\BackgroundDownloadService.cs" />
     <Compile Include="Services\CompactNavigator.cs" />
     <Compile Include="Services\CustomAuthUiService.cs" />
@@ -456,7 +459,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\CatalogueListControl.xaml">
+    <Page Include="Controls\CatalogueRowControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -615,6 +618,10 @@
     <Page Include="ResourceDictionaries\SharedTemplates.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\BlankPage.xaml">
       <SubType>Designer</SubType>
@@ -777,6 +784,7 @@
     </SDKReference>
   </ItemGroup>
   <ItemGroup>
+    <XliffResource Include="MultilingualResources\AmbientSounds.Uwp.ar.xlf" />
     <XliffResource Include="MultilingualResources\AmbientSounds.Uwp.bg.xlf" />
     <XliffResource Include="MultilingualResources\AmbientSounds.Uwp.cs-CZ.xlf" />
     <XliffResource Include="MultilingualResources\AmbientSounds.Uwp.da-DK.xlf" />
@@ -798,6 +806,7 @@
     <XliffResource Include="MultilingualResources\AmbientSounds.Uwp.tr.xlf" />
     <XliffResource Include="MultilingualResources\AmbientSounds.Uwp.uk-UA.xlf" />
     <XliffResource Include="MultilingualResources\AmbientSounds.Uwp.zh-CN.xlf" />
+    <XliffResource Include="MultilingualResources\AmbientSounds.Uwp.zh-Hant.xlf" />
   </ItemGroup>
   <ItemGroup>
     <PRIResource Include="Strings\fr-FR\Resources.resw" />
@@ -848,6 +857,12 @@
   </ItemGroup>
   <ItemGroup>
     <PRIResource Include="Strings\fa-IR\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Strings\ar\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Strings\zh-Hant\Resources.resw" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

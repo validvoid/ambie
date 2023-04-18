@@ -1,7 +1,7 @@
 ﻿[
   {
     "Id": "9947a323-8223-4593-8a82-04d9edfd4d4a",
-    "MetaDataVersion": 3,
+    "MetaDataVersion": 4,
     "Name": "beach",
     "ColourHex": "#c59758",
     "ImagePath": "ms-appx:///Assets/Images/beach.png",
@@ -78,12 +78,15 @@
       },
       "bg": {
         "Name": "Плаж"
+      },
+      "ar": {
+        "Name": "شاطئ"
       }
     }
   },
   {
     "Id": "19a43ab7-c964-4ab5-90f9-26c8a17d4f34",
-    "MetaDataVersion": 3,
+    "MetaDataVersion": 4,
     "Name": "birds",
     "ColourHex": "#5a8391",
     "ImagePath": "ms-appx:///Assets/Images/birds.png",
@@ -160,12 +163,15 @@
       },
       "bg": {
         "Name": "Птици"
+      },
+      "ar": {
+        "Name": "طيور"
       }
     }
   },
   {
     "Id": "f2940c11-0510-4db5-a0ea-5cb27d453bb2",
-    "MetaDataVersion": 3,
+    "MetaDataVersion": 4,
     "Name": "citystreet",
     "ColourHex": "#a2775c",
     "ImagePath": "ms-appx:///Assets/Images/citystreet.png",
@@ -245,12 +251,15 @@
       "bg": {
         "Name": "Градска улица",
         "Description": ""
+      },
+      "ar": {
+        "Name": "شارع المدينة"
       }
     }
   },
   {
     "Id": "17b2af89-1008-4259-b545-dc8ca4ee473f",
-    "MetaDataVersion": 3,
+    "MetaDataVersion": 4,
     "Name": "coffeeshop",
     "ColourHex": "#636252",
     "ImagePath": "ms-appx:///Assets/Images/coffeeshop.png",
@@ -330,12 +339,15 @@
       "bg": {
         "Name": "Кафе-сладкарница",
         "Description": ""
+      },
+      "ar": {
+        "Name": "مَقْهًى"
       }
     }
   },
   {
     "Id": "f32edd85-871e-4349-9e45-42b14fd5449b",
-    "MetaDataVersion": 3,
+    "MetaDataVersion": 4,
     "Name": "creek",
     "ColourHex": "#27281c",
     "ImagePath": "ms-appx:///Assets/Images/creek.png",
@@ -405,22 +417,22 @@
         "Name": "溪流"
       },
       "fa": {
-        "Name": "کریک",
-        "Description": ""
+        "Name": "کریک"
       },
       "el": {
-        "Name": "Κολπίσκος",
-        "Description": ""
+        "Name": "Κολπίσκος"
       },
       "bg": {
-        "Name": "Тясно заливче",
-        "Description": ""
+        "Name": "Тясно заливче"
+      },
+      "ar": {
+        "Name": "جدول"
       }
     }
   },
   {
     "Id": "b22901eb-2269-4b3f-80ab-af2722e68ff1",
-    "MetaDataVersion": 3,
+    "MetaDataVersion": 4,
     "Name": "fireplace",
     "ColourHex": "#442f12",
     "ImagePath": "ms-appx:///Assets/Images/fireplace.png",
@@ -499,12 +511,15 @@
       "bg": {
         "Name": "Камина",
         "Description": ""
+      },
+      "ar": {
+        "Name": "مِدْفَأَة"
       }
     }
   },
   {
     "Id": "61ae9b16-8254-40f4-b4ae-eff4791f6a80",
-    "MetaDataVersion": 3,
+    "MetaDataVersion": 4,
     "Name": "rain",
     "ColourHex": "#334337",
     "ImagePath": "ms-appx:///Assets/Images/rain.png",
@@ -583,12 +598,16 @@
       "bg": {
         "Name": "Дъжд",
         "Description": ""
+      },
+      "ar": {
+        "Name": "مطر",
+        "Description": ""
       }
     }
   },
   {
     "Id": "37988c11-b601-417b-9bb4-bb59fe939641",
-    "MetaDataVersion": 3,
+    "MetaDataVersion": 4,
     "Name": "rainforest",
     "ColourHex": "#152d0c",
     "ImagePath": "ms-appx:///Assets/Images/rainforest.png",
@@ -667,12 +686,16 @@
       "bg": {
         "Name": "Гори",
         "Description": ""
+      },
+      "ar": {
+        "Name": "الغابات المطيره",
+        "Description": ""
       }
     }
   },
   {
     "Id": "1628a20d-744e-4f99-b7e3-24088cba5090",
-    "MetaDataVersion": 3,
+    "MetaDataVersion": 4,
     "Name": "thunder",
     "ColourHex": "#00266f",
     "ImagePath": "ms-appx:///Assets/Images/thunder.png",
@@ -751,12 +774,16 @@
       "bg": {
         "Name": "Гръм",
         "Description": ""
+      },
+      "ar": {
+        "Name": "رعد",
+        "Description": ""
       }
     }
   },
   {
     "Id": "f8424751-d150-41bc-b4ab-c22c41b4b339",
-    "MetaDataVersion": 3,
+    "MetaDataVersion": 4,
     "Name": "underwater",
     "ColourHex": "#00c3d0",
     "ImagePath": "ms-appx:///Assets/Images/underwater.png",
@@ -835,12 +862,16 @@
       "bg": {
         "Name": "Подводни",
         "Description": ""
+      },
+      "ar": {
+        "Name": "تحت الماء",
+        "Description": ""
       }
     }
   },
   {
     "Id": "e0df152b-7166-402a-902d-c69d3a9f96bb",
-    "MetaDataVersion": 3,
+    "MetaDataVersion": 4,
     "Name": "waterfall",
     "ColourHex": "#8bbdd4",
     "ImagePath": "ms-appx:///Assets/Images/waterfall.png",
@@ -920,12 +951,16 @@
       "bg": {
         "Name": "Водопад",
         "Description": ""
+      },
+      "ar": {
+        "Name": "شلال",
+        "Description": ""
       }
     }
   },
   {
     "Id": "aada6607-5dbe-42ff-934d-d5917e597284",
-    "MetaDataVersion": 3,
+    "MetaDataVersion": 4,
     "Name": "whitenoise",
     "ColourHex": "#5e5b49",
     "ImagePath": "ms-appx:///Assets/Images/whitenoise.png",
@@ -1004,12 +1039,16 @@
       "bg": {
         "Name": "Бял шум",
         "Description": ""
+      },
+      "ar": {
+        "Name": "الضوضاء البيضاء",
+        "Description": ""
       }
     }
   },
   {
     "Id": "38c73d89-6c2c-445b-8beb-52b2f72689a2",
-    "MetaDataVersion": 3,
+    "MetaDataVersion": 4,
     "Name": "wind",
     "ColourHex": "#0b2354",
     "ImagePath": "ms-appx:///Assets/Images/wind.png",
@@ -1087,6 +1126,10 @@
       },
       "bg": {
         "Name": "Вятър",
+        "Description": ""
+      },
+      "ar": {
+        "Name": "ريح",
         "Description": ""
       }
     }
